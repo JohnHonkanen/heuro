@@ -8,8 +8,12 @@ include_directories("C:\\Program Files (x86)\\Boost")
 #include_directories("C:\\Boost")
 #include_directories($ENV{BOOST_INCLUDE_DIR})
 include_directories(${INCLUDE})
+include_directories(${SOURCE})
 endif (MSVC)
 
-add_executable(pathfinding-assignment "include/main.cpp")
+add_executable(pathfinding-assignment 
+"include/main.cpp"
+"src/parser.cpp"
+)
 
 set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT pathfinding-assignment)
