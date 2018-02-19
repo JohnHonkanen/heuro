@@ -6,6 +6,7 @@
 Graph Parser::Load(std::string path, bool debug)
 {
 	Graph graph = Graph();
+
 	if (debug)
 	{
 		printf("Debug Mode enabled \n");

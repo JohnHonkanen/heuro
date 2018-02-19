@@ -11,19 +11,26 @@ public:
 	};
 	Node(int in_x, int in_y) : x(in_x), y(in_y) {};
 	void AddConnections(Connections connect) { connections.push_back(connect); };
-
+	int GetID() { return id; };
+	void SetID(int in_id) { id = in_id; };
 private:
 	std::vector<Connections> connections;
 	int x, y;
+	int id;
 };
 
 class Graph
 {
 public:
-	void AddNodes(Node node) { nodes.push_back(node); };
+	void AddNodes(Node node) {
+		node.SetID(counter);
+		nodes.push_back(node);
+		counter++;
+	};
 	void AddConnection(int node, Node::Connections connection) { nodes[node].AddConnections(connection); };
 	Node GetNode(int node) { return nodes[node]; };
 private:
+	int counter = 0;
 	std::string name;
 	std::vector<Node> nodes;
 };
