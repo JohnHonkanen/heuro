@@ -66,6 +66,7 @@ Graph Parser::Load(std::string path, bool debug)
 				label = label.substr(first + 1, last - (first + 1));
 
 				graph.AddConnection(std::stoi(node1), { std::stoi(label), std::stoi(node2) });
+				graph.AddConnection(std::stoi(node2), { std::stoi(label), std::stoi(node1) });
 			}
 			else if(line.find("pos") != std::string::npos)
 			{

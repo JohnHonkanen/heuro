@@ -1,5 +1,5 @@
-#include "astar.h"
-#include "graph.h"
+#include "../include/astar.h"
+#include "../include/graph.h"
 
 Astar::Astar(Graph * in_graph, int in_start, int in_end)
 {
@@ -73,6 +73,7 @@ std::vector<NodePath> Astar::FindPath()
 		currentPath._prevNode = currentNode.GetID();
 		out_path.push_back(currentPath);
 
+		printf("%i \n", nodeToMove);
 		// Move to node
 		currentNode = _graph->GetNode(nodeToMove);
 

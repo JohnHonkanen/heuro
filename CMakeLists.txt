@@ -5,8 +5,6 @@ set(SOURCE '${CMAKE_CURRENT_SOURCE_DIR}/src/')
 
 if (MSVC)
 include_directories("C:\\Program Files (x86)\\Boost")
-#include_directories("C:\\Boost")
-#include_directories($ENV{BOOST_INCLUDE_DIR})
 include_directories(${INCLUDE})
 include_directories(${SOURCE})
 endif (MSVC)
