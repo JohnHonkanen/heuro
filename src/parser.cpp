@@ -3,6 +3,7 @@
 #include <sstream>
 #include <fstream>
 #include <string>
+
 Graph Parser::Load(std::string path, bool debug)
 {
 	Graph graph = Graph();

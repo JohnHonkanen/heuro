@@ -10,10 +10,7 @@
 
 int main() {
 	//Load the Graph
-	//Graph g = Parser::Load("D:/Projects/UWS/AI/part_a/data/random64_4_1517441833.dot", true);
-	Graph g = Parser::Load("C:/Users/Clover/Desktop/UWS/AI/heuro/data/random64_4_1517441833.dot", true);
-	//Assign Start Node and End node
-	//Astar(graph, start, end);
+	Graph g = Parser::Load("data/random64_4_1517441833.dot", true);
 
 	int startPoint = -1;
 	int endPoint = -1;
