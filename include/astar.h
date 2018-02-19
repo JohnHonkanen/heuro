@@ -35,7 +35,7 @@ public:
 	Astar(class Graph* in_graph, int in_start, int in_end);
 	~Astar();
 	
-	void Find(std::map<Node, Node> &came_from, std::map<Node, double> &cost_so_far);
+	void Find(std::map<int, int> &came_from, std::map<int, double> &cost_so_far);
 	
 	int Heuristics(int in_node, int in_end);
 

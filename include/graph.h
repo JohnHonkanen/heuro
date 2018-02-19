@@ -9,13 +9,26 @@ public:
 		int label;
 		int node;
 	};
+	Node() {};
 	Node(int in_x, int in_y) : x(in_x), y(in_y) {};
 	void AddConnections(Connections connect) { connections.push_back(connect); };
 	std::vector<Connections> GetConnections() { return connections; };
 	int GetID() { return id; };
 	void SetID(int in_id) { id = in_id; };
 	void GetPosition(int &out_x, int &out_y) { out_x = x; out_y = y; };
-
+	bool operator<(const Node& n2) const {
+		if (x < n2.x) {
+			return true;
+		}
+		else if (x > n2.x) {
+			return false;
+		} else {
+			if (y < n2.y) {
+				return true;
+			}
+		} 
+		return false;
+	};
 	int id;
 
 private:

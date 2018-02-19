@@ -14,14 +14,24 @@ int main() {
 	//Astar(graph, start, end);
 	Astar astar(&g, 0, 63);
 
-	std::map<Node, Node> came_from;
-	std::map<Node, double> cost_so_far;
+	std::map<int, int> came_from;
+	std::map<int, double> cost_so_far;
 
 	astar.Find(came_from, cost_so_far);
 
-	for (auto it = came_from.begin(); it != came_from.end(); ++it){
-		std::cout << it->first.id << "--" << it->second.id << std::endl;
+	int current = 63;
+	int goal = 0;
+	
+	while (came_from[current] != goal) {
+		std::cout << current << std::endl;
+		current = came_from[current];
 	}
+	std::cout << current << std::endl;
+	std::cout << came_from[current] << std::endl;
+
+	//for (auto it = came_from.begin(); it != came_from.end(); ++it){
+	//	std::cout << it->first << "--" << it->second << std::endl;
+	//}
 	//Output Path
 	//Astar.output();
 	system("pause");
