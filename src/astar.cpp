@@ -1,3 +1,4 @@
+#include "..\include\astar.h"
 #include "../include/astar.h"
 #include "../include/graph.h"
 
@@ -80,4 +81,19 @@ std::vector<NodePath> Astar::FindPath()
 	}
 
 	return out_path;
+}
+
+NodePath* Astar::Find()
+{
+	return NodePath();
+}
+
+int Astar::Heuristics(int in_node, int in_end)
+{
+	int px, py, end_x, end_y;
+
+	_graph->GetNode(in_node).GetPosition(px, py);
+	_graph->GetNode(in_end).GetPosition(end_x, end_y);
+
+	return (end_x - px) + (end_y - py);
 }

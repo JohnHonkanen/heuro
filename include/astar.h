@@ -11,6 +11,10 @@ public:
 	~Astar();
 	
 	std::vector<NodePath> FindPath();
+	NodePath Find();
+
+	int Heuristics(int in_node, int in_end);
+
 
 private:
 	
