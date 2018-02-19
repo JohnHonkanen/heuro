@@ -10,7 +10,7 @@
 
 int main() {
 	//Load the Graph
-	Graph g = Parser::Load("data/random64_4_1517441833.dot", true);
+	Graph g = Parser::Load("../../data/random64_4_1517441833.dot", true);
 
 	int startPoint = -1;
 	int endPoint = -1;
