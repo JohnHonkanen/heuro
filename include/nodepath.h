@@ -1,7 +1,11 @@
 #pragma once
 
-class nodepath {
+class NodePath {
 public:
+
+
+	int _node;
+	int _prevNode;
 
 private:
 
