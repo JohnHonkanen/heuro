@@ -1,10 +1,9 @@
-#include "..\include\astar.h"
-#include "../include/astar.h"
+#include "../include/djikstra.h"
 #include "../include/graph.h"
 #include <map>
 #include <queue>
 
-Astar::Astar(Graph * in_graph, int in_start, int in_end)
+Djikstra::Djikstra(Graph * in_graph, int in_start, int in_end)
 {
 	_graph = in_graph;
 	_start = in_start;
@@ -12,20 +11,20 @@ Astar::Astar(Graph * in_graph, int in_start, int in_end)
 
 }
 
-Astar::~Astar()
+Djikstra::~Djikstra()
 {
 }
 
-void Astar::Find(std::map<int, int>& came_from, std::map<int, double>& cost_so_far)
+void Djikstra::Find(std::map<int, int>& came_from, std::map<int, double>& cost_so_far)
 {
 	Node start_node = _graph->GetNode(_start);
 
 	PriorityQueue<int, double> frontier;
 	frontier.put(_start, 0);
-	
+
 	came_from[_start] = _start;
 	cost_so_far[_start] = 0;
-	
+
 	while (!frontier.empty()) {
 		Node current = _graph->GetNode(frontier.get());
 		int end = _end;
@@ -42,14 +41,13 @@ void Astar::Find(std::map<int, int>& came_from, std::map<int, double>& cost_so_f
 				printf("\t Neighbours: %i: %f \n", next.GetID(), new_cost);
 			}
 			else {
-				
+
 				printf("\t Neighbours: %i: %f, %f \n", next.GetID(), new_cost, cost_so_far[next.GetID()]);
 			}
-			
+
 			if (cost_so_far.find(next.GetID()) == cost_so_far.end() || new_cost < cost_so_far[next.GetID()]) {
-				cost_so_far[next.GetID()] = new_cost; 
-				double priority = new_cost + Heuristics(next.GetID(), _end); // A*
-				//double priority = new_cost; // Djikstra
+				cost_so_far[next.GetID()] = new_cost;
+				double priority = new_cost; 
 				frontier.put(next.GetID(), priority);
 				came_from[next.GetID()] = current.GetID();
 				printf("\t \t Neighbours: %i: %f, %f\n", next.GetID(), new_cost, priority);
@@ -58,10 +56,10 @@ void Astar::Find(std::map<int, int>& came_from, std::map<int, double>& cost_so_f
 	}
 }
 
-int Astar::Heuristics(int in_node, int in_end)
+int Djikstra::Heuristics(int in_node, int in_end)
 {
 	int px, py, end_x, end_y;
-	
+
 	_graph->GetNode(in_node).GetPosition(px, py);
 	_graph->GetNode(in_end).GetPosition(end_x, end_y);
 
