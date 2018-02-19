@@ -33,18 +33,9 @@ void Astar::Find(std::map<int, int>& came_from, std::map<int, double>& cost_so_f
 		if (current_id == end) {
 			break;
 		}
-		printf("Node: %i: %f \n", current_id, cost_so_far[current_id]);
 		for (Node::Connections c : current.GetConnections()) {
 			Node next = _graph->GetNode(c.node);
 			double new_cost = cost_so_far[current_id] + c.label; // g(n)
-
-			if (cost_so_far.find(next.GetID()) == cost_so_far.end()) {
-				printf("\t Neighbours: %i: %f \n", next.GetID(), new_cost);
-			}
-			else {
-				
-				printf("\t Neighbours: %i: %f, %f \n", next.GetID(), new_cost, cost_so_far[next.GetID()]);
-			}
 			
 			if (cost_so_far.find(next.GetID()) == cost_so_far.end() || new_cost < cost_so_far[next.GetID()]) {
 				cost_so_far[next.GetID()] = new_cost; 
@@ -52,7 +43,6 @@ void Astar::Find(std::map<int, int>& came_from, std::map<int, double>& cost_so_f
 				//double priority = new_cost; // Djikstra
 				frontier.put(next.GetID(), priority);
 				came_from[next.GetID()] = current.GetID();
-				printf("\t \t Neighbours: %i: %f, %f\n", next.GetID(), new_cost, priority);
 			}
 		}
 	}
