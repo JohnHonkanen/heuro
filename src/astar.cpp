@@ -32,6 +32,12 @@ std::vector<NodePath> Astar::FindPath()
 	int end_x, end_y;
 	destinationNode.GetPosition(end_x, end_y);
 
+	// Record our (start) path we begin with
+	NodePath currentPath;
+	currentPath._node = _start;
+	currentPath._prevNode = -1;
+	out_path.push_back(currentPath);
+
 	// While end node "destination" is not reached
 	while (currentNode.GetID() != _end) {
 		std::vector<Node::Connections> connections = currentNode.GetConnections();
@@ -62,7 +68,14 @@ std::vector<NodePath> Astar::FindPath()
 			}
 		}
 
+		// Record our path
+		currentPath._node = nodeToMove;
+		currentPath._prevNode = currentNode.GetID();
+		out_path.push_back(currentPath);
+
 		// Move to node
+		currentNode = _graph->GetNode(nodeToMove);
+
 	}
 
 	return out_path;
