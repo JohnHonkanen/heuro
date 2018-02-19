@@ -1,6 +1,9 @@
 #include<iostream>
 #include "graph.h"
 #include "parser.h";
+#include "astar.h"
+#include "nodepath.h"
+
 int main() {
 	//Load the Graph
 	Graph g = Parser::Load("D:/Projects/UWS/AI/part_a/data/random64_4_1517441833.dot", true);

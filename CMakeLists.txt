@@ -13,6 +13,8 @@ endif (MSVC)
 
 add_executable(pathfinding-assignment 
 "include/main.cpp"
+"src/astar.cpp"
+"src/nodepath.cpp"
 "src/parser.cpp"
 )
 
