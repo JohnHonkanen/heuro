@@ -14,8 +14,24 @@ int main() {
 	Graph g = Parser::Load("C:/Users/Clover/Desktop/UWS/AI/heuro/data/random64_4_1517441833.dot", true);
 	//Assign Start Node and End node
 	//Astar(graph, start, end);
-	Astar astar(&g, 0, 63);
-	Djikstra djikstra(&g, 0, 63);
+
+	int startPoint = -1;
+	int endPoint = -1;
+
+	while (startPoint < 0 || startPoint > 63) {
+		std::cout << "Please enter: START POINT (MIN 0 : MAX 63)" << std::endl;
+		std::cin >> startPoint;
+		std::cout << std::endl;
+	}
+	
+	while (endPoint < 0 || endPoint > 63) {
+		std::cout << "Please enter: END POINT (MAX 63)" << std::endl;;
+		std::cin >> endPoint;
+		std::cout << std::endl;
+	}
+
+	Astar astar(&g, startPoint, endPoint);
+	Djikstra djikstra(&g, startPoint, endPoint);
 
 	std::map<int, int> came_from;
 	std::map<int, double> cost_so_far;
@@ -23,8 +39,8 @@ int main() {
 	std::map<int, int> came_from_djikstra;
 	std::map<int, double> cost_so_far_djikstra;
 
-	int current = 63;
-	int goal = 0;
+	int current = endPoint;
+	int goal = startPoint;
 	
 	std::cout << "==== A* ====" << std::endl << std::endl;
 
@@ -47,7 +63,7 @@ int main() {
 	elapsed_secs = double(end - begin) / 1000;;
 	std::cout << "Time taken to complete(Djikstra): " << elapsed_secs << std::endl;
 
-	current = 63;
+	current = endPoint;
 	while (current != goal) {
 		std::cout << "From: " << current << " to " << came_from_djikstra[current] << std::endl;
 		current = came_from_djikstra[current];
