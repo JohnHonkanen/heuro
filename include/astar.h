@@ -4,6 +4,8 @@
 #include "nodepath.h"
 #include <functional>
 #include <map>
+#include <queue>
+#include "graph.h"
 
 // struct "PriorityQueue" implementation taken from: https://www.redblobgames.com/pathfinding/a-star/implementation.html
 template<typename T, typename priority_t>
@@ -33,7 +35,6 @@ public:
 	Astar(class Graph* in_graph, int in_start, int in_end);
 	~Astar();
 	
-	std::vector<NodePath> FindPath();
 	void Find(std::map<Node, Node> &came_from, std::map<Node, double> &cost_so_far);
 	
 	int Heuristics(int in_node, int in_end);
