@@ -85,12 +85,8 @@ std::vector<NodePath> Astar::FindPath()
 	return out_path;
 }
 
-NodePath* Astar::Find()
+void Astar::Find(std::map<Node, Node> &came_from, std::map<Node, double> &cost_so_far)
 {
-
-	std::map<Node, Node> came_from;
-	std::map<Node, double> cost_so_far;
-
 	PriorityQueue<Node, double> frontier;
 	frontier.put(_graph->GetNode(_start), 0);
 
@@ -111,6 +107,10 @@ NodePath* Astar::Find()
 
 			if (cost_so_far.find(next) == cost_so_far.end() || new_cost < cost_so_far[next]) {
 				cost_so_far[next] = new_cost[next];
+				double priority = new_cost + Heuristics(next.GetID(), _end);
+				frontier.put(next, priority);
+				came_from[next] = current;
+				
 			}
 		}
 	}

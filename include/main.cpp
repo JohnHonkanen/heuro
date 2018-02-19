@@ -3,6 +3,7 @@
 #include "parser.h";
 #include "astar.h"
 #include "nodepath.h"
+#include <map>
 
 int main() {
 	//Load the Graph
@@ -11,10 +12,11 @@ int main() {
 	//Assign Start Node and End node
 	//Astar(graph, start, end);
 	Astar astar(&g, 0, 63);
-	std::vector<NodePath> path = astar.FindPath();
-	for (int i = 0; i < path.size(); i++) {
-		//cout << path[i]._node << endl;
-	}
+
+	std::map<Node, Node> came_from;
+	std::map<Node, double> cost_so_far;
+
+	astar.Find(came_from, cost_so_far);
 
 	//Output Path
 	//Astar.output();

@@ -32,8 +32,8 @@ public:
 	~Astar();
 	
 	std::vector<NodePath> FindPath();
-	NodePath* Find();
-
+	void Find(std::map<Node, Node> &came_from, std::map<Node, double> &cost_so_far);
+	
 	int Heuristics(int in_node, int in_end);
 
 
