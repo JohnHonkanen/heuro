@@ -4,6 +4,7 @@
 #include "astar.h"
 #include "nodepath.h"
 #include <map>
+#include <iostream>
 
 int main() {
 	//Load the Graph
@@ -18,6 +19,9 @@ int main() {
 
 	astar.Find(came_from, cost_so_far);
 
+	for (auto it = came_from.begin(); it != came_from.end(); ++it){
+		std::cout << it->first.id << "--" << it->second.id << std::endl;
+	}
 	//Output Path
 	//Astar.output();
 	system("pause");

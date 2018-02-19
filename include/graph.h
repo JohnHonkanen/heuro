@@ -15,10 +15,13 @@ public:
 	int GetID() { return id; };
 	void SetID(int in_id) { id = in_id; };
 	void GetPosition(int &out_x, int &out_y) { out_x = x; out_y = y; };
+
+	int id;
+
 private:
 	std::vector<Connections> connections;
 	int x, y;
-	int id;
+	
 };
 
 class Graph

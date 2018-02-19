@@ -2,6 +2,8 @@
 
 #include <vector>
 #include "nodepath.h"
+#include <functional>
+#include <map>
 
 // struct "PriorityQueue" implementation taken from: https://www.redblobgames.com/pathfinding/a-star/implementation.html
 template<typename T, typename priority_t>
@@ -41,5 +43,6 @@ private:
 	
 	class Graph* _graph;
 
-	int _start, _end;
+	int _start;
+	int _end = -1;
 };
