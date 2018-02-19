@@ -13,7 +13,6 @@ add_executable(pathfinding-assignment
 "include/main.cpp"
 "src/astar.cpp"
 "src/djikstra.cpp"
-"src/nodepath.cpp"
 "src/parser.cpp"
 )
 
