@@ -4,7 +4,7 @@
 #include <fstream>
 #include <string>
 
-Graph Parser::Load(std::string path, bool debug)
+Graph Parser::Load(std::string path, bool debug, bool &success)
 {
 	Graph graph = Graph();
 
@@ -19,6 +19,7 @@ Graph Parser::Load(std::string path, bool debug)
 	if (!infile)
 	{
 		printf("No file found: %s \n", path.c_str());
+		success = false;
 		return graph;
 	}
 
@@ -98,6 +99,6 @@ Graph Parser::Load(std::string path, bool debug)
 			nodeinformation = true;
 		}
 	}
-
+	success = true;
 	return graph;
 }

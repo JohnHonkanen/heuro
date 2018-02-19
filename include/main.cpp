@@ -7,10 +7,22 @@
 #include <map>
 #include <iostream>
 #include <ctime>
+#include <string>
 
 int main() {
 	//Load the Graph
-	Graph g = Parser::Load("../../data/random64_4_1517441833.dot", true);
+
+	std::string path;
+	bool success = false;
+	Graph g;
+
+	while (!success) {
+		std::cout << "Please enter your path to '.dot' file: " << std::endl;
+		std::cout << "EXAMPLE: E:/path/to/folder/yourdotfile.dot" << std::endl;
+		std::cin >> path;
+		g = Parser::Load(path, false, success);
+		std::cout << std::endl;
+	}
 
 	int startPoint = -1;
 	int endPoint = -1;

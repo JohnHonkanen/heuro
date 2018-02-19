@@ -4,5 +4,5 @@ class Graph;
 class Parser
 {
 public:
-	static Graph Load(std::string path, bool debug);
+	static Graph Load(std::string path, bool debug, bool &success);
 };
