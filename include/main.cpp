@@ -22,18 +22,11 @@ int main() {
 	int current = 63;
 	int goal = 0;
 	
-	while (came_from[current] != goal) {
-		std::cout << current << std::endl;
+	while (current != goal) {
+		std::cout << "From: " << current << " to " << came_from[current] << std::endl;
 		current = came_from[current];
 	}
-	std::cout << current << std::endl;
-	std::cout << came_from[current] << std::endl;
 
-	//for (auto it = came_from.begin(); it != came_from.end(); ++it){
-	//	std::cout << it->first << "--" << it->second << std::endl;
-	//}
-	//Output Path
-	//Astar.output();
 	system("pause");
 	return 0;
 }
