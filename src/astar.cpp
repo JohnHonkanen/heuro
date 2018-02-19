@@ -1,6 +1,8 @@
 #include "..\include\astar.h"
 #include "../include/astar.h"
 #include "../include/graph.h"
+#include <map>
+#include <queue>
 
 Astar::Astar(Graph * in_graph, int in_start, int in_end)
 {
@@ -85,15 +87,44 @@ std::vector<NodePath> Astar::FindPath()
 
 NodePath* Astar::Find()
 {
+
+	std::map<Node, Node> came_from;
+	std::map<Node, double> cost_so_far;
+
+	PriorityQueue<Node, double> frontier;
+	frontier.put(_graph->GetNode(_start), 0);
+
+	came_from[_start] = _start;
+	cost_so_far[_start] = 0;
+
+	while (!frontier.empty()) {
+		Node current = frontier.get();
+
+		int current_id = current.GetID();
+		if (current_id == _end) {
+			break;
+		}
+
+		for (Node::Connections c : current.GetConnections()) {
+			double new_cost = cost_so_far[current_id] + next.label);
+			Node next = _graph->GetNode(c.node);
+
+			if (cost_so_far.find(next) == cost_so_far.end() || new_cost < cost_so_far[next]) {
+				cost_so_far[next] = new_cost[next];
+			}
+		}
+	}
+
+
 	return NodePath();
 }
 
 int Astar::Heuristics(int in_node, int in_end)
 {
 	int px, py, end_x, end_y;
-
+	
 	_graph->GetNode(in_node).GetPosition(px, py);
 	_graph->GetNode(in_end).GetPosition(end_x, end_y);
 
-	return (end_x - px) + (end_y - py);
+	return abs(end_x - px) + abs(end_y - py);
 }
