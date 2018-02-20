@@ -29,9 +29,9 @@ void Djikstra::Find(std::map<int, int>& came_from, std::map<int, double>& cost_s
 		Node current = _graph->GetNode(frontier.get());
 		int end = _end;
 		int current_id = current.GetID();
-		if (current_id == end) {
+		/*if (current_id == end) {
 			break;
-		}
+		}*/
 		for (Node::Connections c : current.GetConnections()) {
 			Node next = _graph->GetNode(c.node);
 			double new_cost = cost_so_far[current_id] + c.label; // g(n)

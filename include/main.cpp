@@ -73,7 +73,7 @@ int main() {
 	std::cout << "Time taken to complete(A*): " << elapsed_secs << std::endl;
 
 	while (current != goal) {
-		std::cout << "From: " << current << " to " << came_from[current] << std::endl;
+		std::cout << "From: " << current << " to " << came_from[current] << ": Cost :" << cost_so_far[current] << std::endl;
 		current = came_from[current];
 	}
 
@@ -87,7 +87,7 @@ int main() {
 
 	current = endPoint;
 	while (current != goal) {
-		std::cout << "From: " << current << " to " << came_from_djikstra[current] << std::endl;
+		std::cout << "From: " << current << " to " << came_from_djikstra[current] << ": Cost :" << cost_so_far_djikstra[current] << std::endl;
 		current = came_from_djikstra[current];
 	}
 
